@@ -1,0 +1,12 @@
+{
+  "name": "kling-ai-prompt-generator",
+  "description": "Generate professional Kling AI video prompts. Supports Image-to-Video, Text-to-Video, Motion Control and Multi-Shot Storyboards.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Maciej Dzierżek",
+    "url": "https://maciejdzierzek.com"
+  },
+  "homepage": "https://maciejdzierzek.com/narzedzia/generator-kling-ai",
+  "repository": "https://github.com/maciejdzierzek/kling-ai-prompt-generator",
+  "license": "MIT"
+}
