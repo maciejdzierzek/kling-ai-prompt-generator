@@ -1,6 +1,7 @@
 ---
 name: kling-ai
-description: This skill should be used when the user wants to create AI-generated video with Kling AI - including animating an image, generating video from a text prompt, writing or improving Kling prompts, choosing between Kling models (V3, O3, O1, 2.6, 2.5 Turbo), setting up multi-shot storyboards, using motion control, applying voice cloning, or troubleshooting generation issues. Also applies when the user asks about Kling credits, pricing, or platform alternatives. Trigger phrases include: "Kling", "animate this image", "image to video", "text to video", "AI video generation", "cinematic prompt", "how do I make an AI video".
+description: >
+  This skill should be used when the user wants to create AI-generated video with Kling AI - including animating an image, generating video from a text prompt, writing or improving Kling prompts, choosing between Kling models (V3, O3, O1, 2.6, 2.5 Turbo), setting up multi-shot storyboards, using motion control, applying voice cloning, or troubleshooting generation issues. Also applies when the user asks about Kling credits, pricing, or platform alternatives. Trigger phrases include: "Kling", "animate this image", "image to video", "text to video", "AI video generation", "cinematic prompt", "how do I make an AI video".
 ---
 
 # Kling AI Video Generation
