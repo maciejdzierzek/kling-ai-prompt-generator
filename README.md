@@ -22,6 +22,16 @@ Developed and used daily in production by [Maciej Dzierżek](https://maciejdzier
 
 ---
 
+## Demo - one-shot prompt from this skill
+
+The video below was generated in Kling AI VIDEO 3.0 from a single prompt built by this skill - no retries, no edits, no post-production. It demonstrates four features the skill actively pushes you toward: **4-shot storyboard**, **character consistency across shots**, **explicit camera direction**, and **native audio with speaker attribution**.
+
+https://github.com/maciejdzierzek/kling-ai-prompt-generator/raw/master/demo/from-prompt-to-picture.mp4
+
+A creator types a prompt → match cut into the world the prompt describes (a samurai in neon Tokyo rain) → close-up of the same samurai → pull back reveal it was all playing on the creator's monitor. 12 seconds, 720p, one generation.
+
+---
+
 ## Features
 
 - **6 generation modes:** Image-to-Video, Text-to-Video, Multi-Shot Storyboard, Avatar 2.0 (talking avatars), Motion Control, Canvas Agent (one-click storyboard)
