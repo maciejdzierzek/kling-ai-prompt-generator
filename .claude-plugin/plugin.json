@@ -1,7 +1,7 @@
 {
   "name": "kling-ai-prompt-generator",
-  "description": "Generate professional Kling AI video prompts. Supports Image-to-Video, Text-to-Video, Motion Control and Multi-Shot Storyboards.",
-  "version": "1.0.1",
+  "description": "Generate professional Kling AI video prompts. Supports VIDEO 3.0, VIDEO 3.0 Omni, Avatar 2.0 talking avatars, Multi-Shot Storyboards, Element Reference, Voice Control, Motion Control.",
+  "version": "1.1.0",
   "author": {
     "name": "Maciej Dzierżek",
     "url": "https://maciejdzierzek.com"

@@ -40,78 +40,59 @@ Leaves sway gently in breeze, water surface ripples softly, clouds drift slowly 
 Subtle light reflection passes across [logo/text], gentle ambient glow pulsation. Logo and all text remain completely fixed and unchanged in position and shape. Background static. Elegant, minimal motion.
 ```
 
-## Text-to-Video Templates
+---
 
-### Cinematic Portrait
+## Avatar 2.0 Templates
 
-```
-[Age] [gender] with [hair description] and [clothing], [expression] expression. Standing in [location]. [Action: slowly turns head toward camera / looks up / subtle smile forms]. Cinematic lighting from [direction], shallow depth of field. Camera: [slow push in / static medium shot / gentle orbit]. 35mm lens aesthetic.
-```
+Avatar 2.0 uses your provided audio for lip-sync, body language, and expression. Prompts are short - tone and energy framing, not scene direction. Keep them under 50 words.
 
-### Product Commercial
+### Corporate Presenter (Narration)
 
 ```
-[Product] on [surface material] pedestal in [setting]. Camera slowly orbits around product, [specific detail] catches light creating [reflection type]. [Secondary element] in soft focus background. Studio lighting with [light quality]. Premium advertisement aesthetic. 10 seconds.
+Professional presenter, calm and confident, soft natural smile.
+Minimal hand gestures, occasional natural emphasis.
+Steady eye contact with camera. Slight breathing movement.
+Soft studio lighting, neutral background.
 ```
 
-### Action Scene
+### Energetic Explainer (YouTube-style)
 
 ```
-[Subject] [specific action with clear start and end point] in [environment]. [Weather/atmosphere]. Camera: [tracking shot following subject / wide establishing then push in]. Motion blur on fast elements. [Time of day] lighting. Dust/particles visible in air.
+Enthusiastic creator speaking to camera, expressive face.
+Active hand gestures, head movement to emphasize key points.
+Warm lighting, plain background.
+Energy: high but controlled, conversational pace.
 ```
 
-### Talking Head (2.6 with Audio)
+### Singer / Music Performance
 
 ```
-[Person description] speaks directly to camera in [setting]. Says "[dialogue up to 2 sentences]" in [warm/professional/excited] [male/female] voice. Subtle hand gestures matching speech rhythm. Natural eye contact with camera. Soft studio lighting, blurred background. Medium close-up, static camera.
+Vocal performer, eyes closed during emotional phrases, head tilts with phrasing.
+Hand gestures match musical dynamics.
+Stage lighting with subtle backlight.
+Posture: confident, full body present in frame.
 ```
 
-### Atmospheric Loop
+### Educational / Documentary Narrator
 
 ```
-[Scene description] with [primary motion element]. [Secondary element] moves slowly in background. Subtle [atmospheric effect: fog drifts / dust particles float / light rays shift]. Motion returns to approximate starting position. Peaceful ambient mood. Static camera.
+Thoughtful presenter, measured pace.
+Subtle facial reactions to content, occasional gestural emphasis.
+Soft directional lighting, slight depth in background.
+Calm, intellectual energy.
 ```
 
-## Camera Movement Vocabulary
+### Quick Setup Checklist for Avatar 2.0
 
-### Supported Movements
-- `static camera` / `locked off shot` - no movement
-- `slow push in` / `dolly in` - camera moves toward subject
-- `pull back` / `dolly out` - camera moves away from subject
-- `pan left/right` - horizontal rotation
-- `tilt up/down` - vertical rotation
-- `orbit` / `arc shot` - circular movement around subject
-- `tracking shot` - follows moving subject
-- `crane up/down` - vertical camera movement
+1. Source image: face clearly visible, neutral or slight expression, even lighting, no extreme angle
+2. Audio: clean recording or AI-generated TTS (ElevenLabs etc.), no background music behind speech (music OK if the performance IS music)
+3. Officially listed lip-sync languages: **EN, JA, KO, ZH**. In practice the model syncs to whatever audio you provide - **field-confirmed working with Polish ElevenLabs audio** and likely other Latin-script languages. Try unlisted languages instead of assuming they won't work.
+4. Duration: up to 5 minutes single continuous generation, covers all scenarios (narration, song, advertising, storytelling)
+5. Optional tone/style prompt - 20-50 words framing energy and gesture level
 
-### Movement Modifiers
-- `slow` / `gentle` / `subtle` - reduced speed
-- `smooth` / `fluid` - no jerky motion
-- `gradual` - progressive change
+---
 
-## Style Keywords
-
-### Lighting
-`cinematic lighting`, `studio lighting`, `golden hour`, `soft diffused light`, `dramatic shadows`, `rim light`, `backlit`, `neon glow`, `natural daylight`
-
-### Atmosphere
-`foggy`, `misty`, `dusty`, `rainy`, `snowy`, `sunny`, `overcast`, `moody`, `ethereal`
-
-### Visual Style
-`photorealistic`, `cinematic`, `film grain`, `shallow depth of field`, `bokeh`, `high contrast`, `desaturated`, `vibrant colors`, `noir`
-
-### Lens/Camera
-`35mm lens`, `wide angle`, `telephoto`, `anamorphic`, `fisheye`, `macro`
-
-## Negative Prompt Suggestions
-
-Add to negative prompt field when available:
-
-```
-distortion, morphing, warping, glitching, artifacts, blurry, low quality, text changes, logo deformation, unnatural movement, jerky motion
-```
-
-## Multi-Shot Storyboard Templates (3.0 Only)
+## Multi-Shot Storyboard Templates (VIDEO 3.0)
 
 ### Short Narrative (4 shots, ~12s)
 
@@ -139,7 +120,9 @@ Shot 2 (4s): [The process / journey / transformation]. Camera: tracking.
 Shot 3 (3s): [Final reveal, return to result]. Camera: pull back to wide.
 ```
 
-## Text-to-Video Templates (Updated for 3.0)
+---
+
+## Text-to-Video Templates (VIDEO 3.0)
 
 ### Cinematic Portrait
 
@@ -170,7 +153,9 @@ Camera: [wide establishing for setup] / [tracking shot for peak action] / [stati
 Style: [time of day] lighting. Motion blur on fast elements. Dust/particles in air.
 ```
 
-### Talking Head with Audio (V3/O3)
+### Talking Head with Audio (VIDEO 3.0)
+
+*For longer talking-head content (up to 1 min narration / 5 min musical), use Avatar 2.0 instead - see Avatar 2.0 Templates section above.*
 
 ```
 Setting: [Person description] in [setting with specific background details].
@@ -189,6 +174,8 @@ Action: [Primary element] [cyclical motion]. [Secondary element] moves slowly in
 Camera: Static, locked off.
 Style: Peaceful ambient mood, [lighting keyword].
 ```
+
+---
 
 ## Camera Movement Vocabulary
 
@@ -211,6 +198,8 @@ Style: Peaceful ambient mood, [lighting keyword].
 - `gradual` - progressive change
 - `snap` / `whip` - fast, abrupt movement
 
+---
+
 ## Style Keywords
 
 ### Lighting
@@ -225,6 +214,8 @@ Style: Peaceful ambient mood, [lighting keyword].
 ### Lens/Camera
 `35mm lens`, `wide angle`, `telephoto`, `anamorphic`, `fisheye`, `macro`, `50mm portrait`, `85mm shallow DOF`
 
+---
+
 ## Negative Prompt Suggestions
 
 Add to negative prompt field when available:
@@ -233,14 +224,16 @@ Add to negative prompt field when available:
 distortion, morphing, warping, glitching, artifacts, blurry, low quality, text changes, logo deformation, unnatural movement, jerky motion, flickering, color shifting, face distortion
 ```
 
-## Audio Prompts (V3, O3, and 2.6)
+---
+
+## Audio Prompts (VIDEO 3.0, 2.6, Avatar 2.0)
 
 ### Dialogue with Speaker Attribution
 ```
 [Speaker: Character Name] "[text]" in a [adjective] [male/female] voice with [accent].
 ```
 
-### Multilingual Dialogue (V3/O3 only)
+### Multilingual Dialogue (VIDEO 3.0)
 ```
 [Speaker: Character] "[Japanese text here]" in a natural conversational tone.
 ```
@@ -260,10 +253,36 @@ Background ambient: [environment: city traffic at night / forest birds morning /
 [Genre] music playing softly in background, [tempo: upbeat / slow / dramatic].
 ```
 
-### Voice Cloning Prompt (O3 only)
+### Voice Control (VIDEO 2.6 / 3.0)
+
+Voice Control (launched 2025-12-16, [official release note](https://kling.ai/release-note/release-notes/7trhudk78j)) creates a custom voice from a 5-30s audio sample and binds it to characters via `[Character] @VoiceName` syntax.
+
 ```
-[Speaker: @reference_voice] "[dialogue text]" - use reference voice characteristics.
+[Livestream Host] @Sweet Female Voice: "This top is a trending must-have!"
 ```
+
+Multi-character dialogue:
+```
+[Teacher] @Intellectual Female Voice: "Turn to page 20."
+[Student] @Teen Male Voice: "Okay, teacher!"
+```
+
+**Notes:**
+- Currently supports Chinese and English only (with bidirectional cross-language delivery)
+- Up to 200 voices in your library
+- Use 5-30s clean reference audio: single speaker, neutral emotion, low background noise
+- Pricing: +2 credits/sec on top of base video generation
+
+### Voice Cloning vs Avatar 2.0 - which to use
+
+| You want... | Use |
+|-------------|-----|
+| Consistent IP voice across many video generations | Voice Control (VIDEO 2.6 / 3.0) |
+| Talking-head video from 1 image + 1 audio file | Avatar 2.0 |
+| Long-form (1-5 min) talking content | Avatar 2.0 |
+| Multi-character scene with native dialogue | VIDEO 3.0 + Voice Control |
+
+---
 
 ## Quick Reference: Common Mistakes
 

@@ -2,7 +2,7 @@
 
 > A Claude skill for generating professional Kling AI video prompts.
 > Works with Claude.ai, Claude Desktop, and Claude Code.
-> Supports Image-to-Video, Text-to-Video, Multi-Shot Storyboards, and Motion Control workflows.
+> Supports Kling 3.0, Avatar 2.0 (talking avatars), Multi-Shot Storyboards, Character LoRA, Draft Mode, and Motion Control workflows.
 
 [![Live Generator](https://img.shields.io/badge/Live_Generator-maciejdzierzek.com-blue)](https://maciejdzierzek.com/narzedzia/generator-kling-ai)
 [![Claude Skill](https://img.shields.io/badge/Claude-Skill-orange)](https://claude.ai)
@@ -24,15 +24,20 @@ Developed and used daily in production by [Maciej Dzierżek](https://maciejdzier
 
 ## Features
 
-- **4 generation modes:** Image-to-Video, Text-to-Video, Multi-Shot Storyboard (3.0 only), Motion Control
-- **Model-aware:** Covers the full Kling lineup - V3, O3, O1, 2.6, 2.5 Turbo - with model-specific prompt length and element limits
+- **6 generation modes:** Image-to-Video, Text-to-Video, Multi-Shot Storyboard, Avatar 2.0 (talking avatars), Motion Control, Canvas Agent (one-click storyboard)
+- **Model-aware:** Covers the current Kling lineup - **VIDEO 3.0**, **VIDEO 3.0 Omni**, **VIDEO 3.0 Motion Control**, **Avatar 2.0**, **2.6**, **2.5 Turbo** - with model-specific prompt length and element limits
+- **Avatar 2.0 workflow:** Generate a talking avatar from one photo + audio - up to 5 minutes of continuous output
+- **Element Reference:** Kling's official mechanism for cross-shot character/scene consistency. Multi-image references on VIDEO 3.0, plus video references on Omni
+- **Voice Control:** Custom voice creation with `[Character] @VoiceName` syntax (VIDEO 2.6 / 3.0, EN+ZH bidirectional)
+- **Canvas Agent guidance:** One-click storyboard, multi-angle expansion, reverse prompt suggestions, batch generation
 - **Camera movement vocabulary:** 10 named movements (static, dolly, orbit, tracking, crane, POV...) with speed modifiers
 - **Motion endpoint pattern:** Adds "returns to starting position" / "then settles" to prevent the stuck-at-99% generation hang
-- **Audio prompts:** Speaker attribution syntax for lip-synced dialogue, SFX, ambient, and voice cloning (O3)
-- **Sequential action support:** 3.0-specific "first / then / finally" action structure for multi-step scenes
-- **Elements 3.0 reference tagging:** `@element_name` syntax for cross-shot subject consistency
-- **6 ready-to-use templates:** Product, portrait, atmospheric loop, commercial, talking head, action scene
+- **Audio prompts:** Speaker attribution syntax for lip-synced dialogue (5 languages on VIDEO 3.0: EN, ZH, JA, KO, ES)
+- **Sequential action support:** "First / then / finally" action structure for multi-step scenes
+- **Native 4K guidance:** 30 credits/sec on VIDEO 3.0 series (since 2026-04-23)
+- **10+ ready-to-use templates:** Product, portrait, atmospheric loop, commercial, talking head, action scene, Avatar presenter/explainer/singer
 - **Always outputs English prompts:** Regardless of the language you describe your scene in
+- **Sourced from official Kling release notes:** every major fact in the skill is verifiable against [kling.ai/release-note](https://kling.ai/release-note) - URLs cited inline
 
 ---
 
@@ -52,7 +57,7 @@ Claude will automatically use the skill when you describe a Kling AI video task.
 
 ```bash
 /plugin marketplace add maciejdzierzek/kling-ai-prompt-generator
-/plugin install kling-ai-prompt-generator@maciejdzierzek-kling-ai-prompt-generator
+/plugin install kling-ai-prompt-generator@maciejdzierzek
 ```
 
 No download needed - installs directly from this GitHub repository.
@@ -91,7 +96,14 @@ The product is a perfume bottle and I want subtle light reflections moving.
 
 ```
 I need a text-to-video prompt for a cinematic portrait of a woman in a cafe.
-She should slowly turn toward the camera. Using Kling V3.
+She should slowly turn toward the camera. Using Kling 3.0.
+```
+
+For Avatar 2.0 (talking avatars):
+
+```
+I have a portrait photo and a 45-second narration audio file. Build me an Avatar 2.0
+prompt for a corporate explainer video with a calm, professional tone.
 ```
 
 Use a template as starting point:
@@ -160,16 +172,16 @@ See [examples/](examples/) for ready-to-use prompts with notes on expected resul
 
 ## Models
 
-| Model | Best For | Prompt Length | Max Duration | Audio |
-|-------|----------|---------------|--------------|-------|
-| **Video 3.0 (V3)** | Multi-shot narrative, sequential actions | 100-200 words | 15s | EN, ZH, JA, KO, ES |
-| **Video 3.0 Omni (O3)** | Reference-based consistency, 4K, voice cloning | 100-200 words | 15s | EN, ZH, JA, KO, ES |
-| **Video O1** | Complex scenes, older pipeline | 60-100 words | 10s | No |
-| **Video 2.6** | Audio-visual sync (EN/CN only) | 50-80 words | 10s | EN + ZH |
-| **2.5 Turbo** | Fast drafts, simple scenes | 40-60 words | 10s | No |
-| **2.6 Motion Control** | Precise camera trajectory from reference video | Short | 30s | Optional |
+| Model | Best For | Prompt Length | Max Duration | Audio / Output | Released |
+|-------|----------|---------------|--------------|-------|----------|
+| **VIDEO 3.0** | Cinematic storytelling, multi-shot, native audio multilingual | 100-200 words | 15s | EN, ZH, JA, KO, ES + dialects / up to 4K | 2026-01-31 |
+| **VIDEO 3.0 Omni** | VIDEO 3.0 + video element reference + element voice control | 100-200 words | 15s | EN, ZH, JA, KO, ES + dialects / up to 4K | 2026-01-31 |
+| **VIDEO 3.0 Motion Control** | Motion transfer with high facial consistency (incl. occlusions) | Short | 30s | Optional / 1080p | 2026-03-04 |
+| **Avatar 2.0** | Talking avatars from 1 image + 1 audio file | 20-50 words (framing) | up to 5 min | Lip-syncs to your audio / 1080p | 2025-12-04 |
+| **Kling 2.6** | Older Native Audio pipeline, EN+ZH | 50-80 words | 10s | EN + ZH / 1080p | 2025-12-03 |
+| **Kling 2.5 Turbo** | Fast drafts, simple scenes | 40-60 words | 10s | None / 1080p | earlier |
 
-**When to use V3 vs O3:** Same generation quality. O3 adds 4K resolution, 60fps, reference-based subject consistency, and voice cloning. Use V3 for prompt-driven work; O3 when you have a reference image or video to anchor identity.
+**"Kling 3.0" is a series, not one model.** The official 2026-01-31 release note distinguishes **VIDEO 3.0** (upgrade from 2.6) and **VIDEO 3.0 Omni** (upgrade from O1). Both share the new unified multimodal architecture; Omni adds video element reference and element voice control. For long-form talking-head content (>15s), use **Avatar 2.0** - it's purpose-built and supports up to 5 minutes. **Native 4K** is a separate 2026-04-23 release available on the VIDEO 3.0 series at 30 credits/sec.
 
 ---
 
