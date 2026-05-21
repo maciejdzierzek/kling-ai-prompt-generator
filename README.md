@@ -26,7 +26,11 @@ Developed and used daily in production by [Maciej Dzierżek](https://maciejdzier
 
 The video below was generated in Kling AI VIDEO 3.0 from a single prompt built by this skill - no retries, no edits, no post-production. It demonstrates four features the skill actively pushes you toward: **4-shot storyboard**, **character consistency across shots**, **explicit camera direction**, and **native audio with speaker attribution**.
 
-<video src="https://github.com/maciejdzierzek/kling-ai-prompt-generator/raw/main/demo/from-prompt-to-picture.mp4" controls muted playsinline width="720"></video>
+
+
+https://github.com/user-attachments/assets/87a57287-5d9b-4c43-b430-46860222951d
+
+
 
 If your client doesn't render the player above, [watch the demo here](demo/from-prompt-to-picture.mp4).
 
