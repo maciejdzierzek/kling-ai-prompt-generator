@@ -4,6 +4,35 @@ All notable changes to the Kling AI Prompt Generator skill and plugin are docume
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-08-05
+
+Maintenance audit against the official Kling release notes ([kling.ai/release-note](https://kling.ai/release-note)) and the public API rate card ([kling.ai/dev/pricing](https://kling.ai/dev/pricing)), both fetched with the Playwright SPA fetcher on 2026-08-04. One new Kling release has shipped since v1.1.0 and the skill was missing it entirely.
+
+### Added
+
+- **VIDEO 3.0 Turbo** (released 2026-06-17) - the efficiency variant of the 3.0 series. Documented with what the release note actually claims: quality held (visual quality, motion dynamics, prompt adherence, multi-shot storyboard logic), best-in-family audio-visual sync and lip sync that stays stable in longer videos, faster generation aimed at "reducing the overall cost of scaled creation", and the two constraints the price list reveals - **no 4K tier** and native audio always on.
+- **Video Editing on VIDEO 3.0 Omni** - a whole capability the skill did not cover. Input 3-15s, output up to 15s, 4K input and 4K output, improved fidelity to source. Includes the four edit patterns Kling publishes (object swap with motion preserved, background + subject replacement with light matching, targeted attribute change, full style transfer with trajectory lock) and the prompt rules visible across all of them.
+- **`@video` / `@image` reference handles** - Omni's official examples address inputs by role (`@video` as motion-trajectory source, `@image` as style/object source). Documented with the vendor's own example prompt.
+- **Full API rate card in Units** - `1 Unit = $0.14`, billed per second, broken down by model x resolution x native-audio x video-input. Previously the skill only knew in-app credits, which is the wrong currency for anyone integrating. Includes the three cost lessons that fall out of the table: 4K is a flat 3.0 U/s cliff on every model, Turbo at 1080p with audio is cheaper than VIDEO 3.0 with audio, and each of native audio / video input adds roughly 25-50%.
+- **Release timeline** in "Verification & Sources" - all ten release notes from Avatar 2.0 (2025-12-04) to the 3.0 Turbo upgrade (2026-06-17), with a note that 2026-06-17 is the newest entry published as of 2026-08-04. Gives the next audit a dated baseline instead of a guess.
+- **Five new troubleshooting rows** - audio desync on talking shots, edited video drifting from source, pasted-on look after an object swap, editing input outside the 3-15s window, 4K request failing on Turbo.
+- **4 new eval cases** covering Turbo model selection, video editing, API cost, and the editing-drift failure mode.
+
+### Changed
+
+- **Frontmatter split into `description` + `when_to_use`** (the `when_to_use` field is now supported and is appended to `description` in the skill listing, sharing a 1,536-character cap). Combined length 938 characters.
+- **Model lineup extended to seven rows** with Turbo added and Omni's editing upgrade dated.
+- **Model Selection Guide** gained a "Choose VIDEO 3.0 Turbo when" block and an editing trigger under Omni, plus the practical rule: talking head or batch to Turbo, 4K hero shot to VIDEO 3.0, identity-from-reference-video to Omni.
+- **Model-specific prompt-length table** gained rows for Turbo and for Omni editing (editing wants 40-120 words and exactly one edit intent, not a 200-word scene description).
+- **Settings Reference** updated with editing durations and the explicit note that 4K is VIDEO 3.0 and Omni only, not Turbo.
+- **`references/pricing.md` restructured** to lead with the two-currency distinction (subscription credits vs. API Units) and the full API rate card, followed by the existing subscription data with its older verification date kept honest.
+- **Third-party provider guidance rewritten.** Aggregator and reseller prices are their own, and a headline per-second figure is a base rate, not the bill - the final charge moves with resolution, duration, aspect ratio and audio/video input. The advice is to read the response's own usage/cost field after a real call rather than trust a table.
+- **Scope statement added at the top** - this skill covers Kling's video models. Kling's IMAGE 3.0 series, IMAGE O1 and Image Series Mode exist and are deliberately out of scope, so the skill does not drift into image generation.
+
+### Source verification notes
+
+Everything above comes from Kling-controlled pages: the release-note index, the 2026-06-17 release note (`/release-note/release-notes/Kling_3_Turbo`), and the public API pricing page. The subscription-plan section retains its 2026-05-21 verification date and says so, because that data lives behind a login the fetcher cannot reach. Quotes from the release note are marked as quotes. No third-party reviews were used.
+
 ## [1.1.0] - 2026-05-21
 
 This release was rewritten against Kling's **official release notes** at [kling.ai/release-note](https://kling.ai/release-note) (fetched via headless browser) and the **official pricing page** (verified from a 2026-05-21 dashboard screenshot). Earlier drafts relied on third-party reviews and contained factual errors. All facts in this entry are sourced from official Kling pages - URLs cited in `SKILL.md` and `references/pricing.md`.

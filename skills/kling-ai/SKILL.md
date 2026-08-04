@@ -1,11 +1,14 @@
 ---
 name: kling-ai
-description: This skill should be used when the user wants to create AI-generated video with Kling AI - including animating an image, generating video from a text prompt, building a talking AI avatar from one photo + audio, writing or improving Kling prompts, choosing between Kling models (VIDEO 3.0, VIDEO 3.0 Omni, Avatar 2.0, 2.6, 2.5 Turbo, VIDEO 3.0 Motion Control), setting up multi-shot storyboards via the Canvas Agent, using Element Reference for character consistency, applying Voice Control or voice cloning, or troubleshooting generation issues. Also applies when the user asks about Kling credits, pricing, or platform alternatives. Trigger phrases include "Kling", "animate this image", "image to video", "text to video", "AI video generation", "talking avatar", "AI presenter", "lip sync video", "cinematic prompt", "how do I make an AI video".
+description: Write and improve prompts for Kling AI video generation, and pick the right Kling model for the job. Covers image-to-video, text-to-video, multi-shot storyboards, talking avatars from one photo plus audio, motion transfer, video editing of an existing clip, Element Reference for character consistency, Voice Control and voice cloning, native audio and dialogue, first/last frame control, credit and API costs, and troubleshooting failed generations.
+when_to_use: Use for anything involving Kling AI or its models - VIDEO 3.0, VIDEO 3.0 Turbo, VIDEO 3.0 Omni, VIDEO 3.0 Motion Control, Avatar 2.0, Kling 2.6, 2.5 Turbo, Canvas Agent. Trigger phrases include "Kling", "animate this image", "image to video", "text to video", "AI video generation", "talking avatar", "AI presenter", "lip sync video", "cinematic prompt", "multi-shot storyboard", "motion transfer", "edit this video with AI", "how do I make an AI video", "Kling credits", "Kling pricing".
 ---
 
 # Kling AI Video Generation
 
-Source-of-truth for the facts in this skill: the official Kling release notes at [kling.ai/release-note](https://kling.ai/release-note). When numbers, durations, credit costs, or language lists matter for a deliverable, verify them there before quoting.
+Source-of-truth for the facts in this skill: the official Kling release notes at [kling.ai/release-note](https://kling.ai/release-note) and the API pricing page at [kling.ai/dev/pricing](https://kling.ai/dev/pricing). Verified **2026-08-04**. When numbers, durations, credit costs, or language lists matter for a deliverable, verify them there before quoting.
+
+**Scope:** this skill covers Kling's **video** models. Kling also ships image models (the IMAGE 3.0 series, IMAGE O1, Image Series Mode, 2K/4K image output) - those are out of scope here; for still images use the `nano-banana` skill or check Kling's release notes directly.
 
 ## Platform Access
 
@@ -18,7 +21,7 @@ Alternative platforms with Kling integration: Higgsfield, Pollo.ai, Fal.ai, Medi
 ## Quick Start: Animate an Image in 60 Seconds
 
 1. Go to **app.klingai.com/global** - AI Videos - Image to Video
-2. Select **VIDEO 3.0** (or **VIDEO 3.0 Omni** if you have reference images / video elements to anchor identity)
+2. Select **VIDEO 3.0** (or **VIDEO 3.0 Turbo** if the shot has dialogue or you are generating a batch, or **VIDEO 3.0 Omni** if you have reference images / video elements to anchor identity)
 3. Upload your image
 4. Write a short motion prompt - describe only what moves, not the whole scene:
    ```
@@ -31,18 +34,31 @@ That's it. For model selection, advanced prompting, avatars, and multi-shot work
 
 ---
 
-## Model Lineup (as of May 2026)
+## Model Lineup (as of August 2026)
 
 | Model | Best For | Resolution | Audio | Max Duration | Released |
 |-------|----------|------------|-------|--------------|----------|
 | **VIDEO 3.0** | Cinematic storytelling, multi-shot, native audio, multilingual dialogue | up to 4K | Yes (5 langs) | 15s | 2026-01-31 |
-| **VIDEO 3.0 Omni** | VIDEO 3.0 capabilities + video element reference + element voice control | up to 4K | Yes (5 langs) | 15s | 2026-01-31 |
+| **VIDEO 3.0 Turbo** | Same job as 3.0 but faster and cheaper per second; strongest audio-visual sync and lip-sync | 720p / 1080p (no 4K) | Yes, always on | 15s | 2026-06-17 |
+| **VIDEO 3.0 Omni** | VIDEO 3.0 capabilities + video element reference + element voice control + **video editing** | up to 4K | Yes (5 langs) | 15s | 2026-01-31 (editing upgraded 2026-06-17) |
 | **VIDEO 3.0 Motion Control** | Motion transfer with high facial consistency, including occlusions and multi-angle | 1080p | Optional | 30s | 2026-03-04 |
 | **Avatar 2.0** | Talking avatars from 1 image + 1 audio file, up to 5 minutes | 1080p / 48fps | Lip-sync to provided audio | 5 min | 2025-12-04 |
 | **Kling 2.6** | Older Native Audio pipeline (EN+ZH), good fast/budget option | 1080p | EN + ZH | 10s | 2025-12-03 |
 | **Kling 2.5 Turbo** | Fastest, simplest scenes, draft work | 1080p | No | 10s | earlier |
 
-**Important clarification on the 3.0 Series:** "Kling 3.0" is a *series name*, not a single model. It contains **VIDEO 3.0** (upgrade path from VIDEO 2.6) and **VIDEO 3.0 Omni** (upgrade path from the older VIDEO O1). Both share the new unified multimodal training framework; Omni adds video element reference and element voice control. Third-party reviews sometimes merge them into one - the official release notes do not.
+**Important clarification on the 3.0 Series:** "Kling 3.0" is a *series name*, not a single model. It contains **VIDEO 3.0** (upgrade path from VIDEO 2.6), **VIDEO 3.0 Turbo** (the efficiency variant, added 2026-06-17) and **VIDEO 3.0 Omni** (upgrade path from the older VIDEO O1). All share the unified multimodal training framework; Omni adds video element reference, element voice control and video editing. Third-party reviews sometimes merge them into one - the official release notes do not.
+
+### What VIDEO 3.0 Turbo actually changes (2026-06-17)
+
+Per the official release note, Turbo is positioned as *"the right balance between efficiency and quality"* - not a downgrade:
+
+- **Quality held, not cut** - consistent performance in visual quality, motion dynamics and prompt adherence; it *"accurately follows multi-shot storyboard logic, ensuring smooth continuity and a unified visual style across scenes."*
+- **Best-in-family audio-visual sync** - *"highly accurate alignment between audio and visuals, with smooth and natural lip sync"*, and it *"maintains stable synchronization even in longer videos."* The release note names the use cases: talking-head content, voice-driven storytelling, character-based formats.
+- **Faster and cheaper at scale** - explicitly aimed at *"reducing the overall cost of scaled creation."* Confirmed on the API price list: 1080p with native audio at 1.0 Unit/s vs. 1.2 Units/s for VIDEO 3.0 with audio.
+- **No 4K tier.** The API price list has no 4K column for Turbo. If the deliverable is 4K, use VIDEO 3.0 or Omni.
+- **Native audio is always on** for Turbo in the price list (there is no audio-off row), so budget accordingly.
+
+**Practical rule:** if the shot is a person talking, or you are generating many clips of a series, start on **Turbo**. If it is a 4K hero shot, use **VIDEO 3.0**. If identity must hold across shots from a reference video, use **Omni**.
 
 ## Model Selection Guide
 
@@ -54,8 +70,15 @@ That's it. For model selection, advanced prompting, avatars, and multi-shot work
 - Working up to 15s, flexible duration
 - Default choice for prompt-driven work
 
+**Choose VIDEO 3.0 Turbo when:**
+- The subject is talking - dialogue, presenter, voice-over-driven narrative (best lip-sync and A/V sync in the family)
+- You are generating a batch: a series of clips, many variants, or a full storyboard where per-second cost compounds
+- You want 3.0-class quality and multi-shot continuity without paying the 4K-capable tiers
+- **Not** when you need 4K output - Turbo has no 4K tier
+
 **Choose VIDEO 3.0 Omni when:**
 - Have a reference **video** (not just images) to anchor character/scene
+- You want to **edit an existing video** rather than generate from scratch (see Video Editing below)
 - Want to add voice to specific elements (Element Voice Control)
 - Need the strongest cross-shot consistency for commercial work
 - Same other capabilities as VIDEO 3.0 (text-to-video, image-to-video, native audio, multi-shot, 15s)
@@ -151,6 +174,53 @@ Launched 2026-01-29 - an AI orchestrator on top of the Kling generation models t
 
 When the user needs more than a single clip - a complete short film with consistent characters, or a multi-asset deliverable - Canvas Agent is the right starting point.
 
+### Video Editing (VIDEO 3.0 Omni)
+
+Upgraded 2026-06-17 ([release note](https://kling.ai/release-note/release-notes/Kling_3_Turbo)). Instead of generating a new clip, you feed Omni an **existing video** plus reference images and an instruction, and it re-renders the clip with your change applied while keeping the original motion.
+
+Current limits per that release note:
+- **Input video 3-15s**, output up to **15s** (was capped lower before this release)
+- **4K input and 4K output** both supported
+- Stronger fidelity to the source: *"Editing results stay more faithful to the source material, while creative instructions are executed with greater precision."*
+
+**Reference syntax.** Omni's official examples address inputs by role with `@`-prefixed handles - `@video` for the motion/trajectory source, `@image` for the style or object source:
+
+```
+Use @video as the motion trajectory reference and @image as the rendering style reference.
+Keep the original camera angle, main architectural structure, spatial layout,
+and the red ball's motion path unchanged.
+```
+
+**What edits actually work well** (all four patterns below are from Kling's own published examples):
+
+1. **Object swap, motion preserved**
+   ```
+   Replace the trophy in the video with the toy figurine shown in the reference image.
+   ```
+2. **Background and subject replacement with light matching**
+   ```
+   Replace the video background with Image 1 and the subject with Image 2,
+   keeping the original motion and positioning unchanged. Ensure the lighting and
+   shadows on the subject match the target environment, with a natural,
+   non-composited look and no sticker-like artifacts.
+   ```
+3. **Targeted colour/attribute change**
+   ```
+   Change the character's pupil colour to light blue, and the hair colour to light blue.
+   Change the headphones to light brown. Refer to the reference image for the expected result.
+   ```
+   ```
+   Change the colour of the parrot's feathers to match the reference image.
+   Keep all other elements of the video unchanged.
+   ```
+4. **Full style transfer with trajectory lock** - restyle the whole scene while an element keeps its exact original path. This is the hardest edit and where the explicit "unchanged" list earns its keep.
+
+**Prompt rules for editing (the pattern visible across every official example):**
+- Name the change first, in one clause. One edit intent per generation.
+- Then an explicit **unchanged list**: camera angle, motion path, spatial layout, positioning, everything else.
+- For anything composited in, add the physical-plausibility clause: *"lighting and shadows match the target environment, natural, non-composited look, no sticker-like artifacts."* Kling's own example includes it - it is doing work.
+- Point at the reference explicitly (`@image`, "Image 1", "the reference image") rather than describing the target from memory.
+
 ### First and Last Frame Control (VIDEO 3.0)
 
 Define exactly where a video starts and ends visually.
@@ -240,6 +310,8 @@ VIDEO 3.0 handles **sequential actions** reliably: "First she looks up, then tur
 | Model | Prompt Length | Max Elements | Key Pattern |
 |-------|---------------|--------------|-------------|
 | VIDEO 3.0 / 3.0 Omni | 100-200 words | 6-7 | Sequential actions, multi-shot, native audio |
+| VIDEO 3.0 Turbo | 100-200 words | 6-7 | Same as 3.0; lean on dialogue and lip-sync - that is where it wins |
+| VIDEO 3.0 Omni (editing) | 40-120 words | 1 edit intent | Change clause + explicit unchanged list + `@video` / `@image` handles |
 | Avatar 2.0 | 20-50 words (framing only) | 1-2 | Tone/energy descriptor; audio does the work |
 | 2.6 | 50-80 words | 5-7 | Include audio instructions (EN/ZH) |
 | 2.5 Turbo | 40-60 words | 3-4 | Keep it simple |
@@ -300,14 +372,19 @@ See `references/prompt-templates.md` for ready-to-use templates organized by use
 | Avatar 2.0 body too static / too active | No framing prompt | Add a one-line tone/energy descriptor: "calm presenter, minimal gestures" or "energetic performer, full body movement" |
 | Voice Control sounds wrong | Bad reference audio | Use 5-30s clean clip, single speaker, neutral emotion, low background noise |
 | Multi-shot feels disjointed | No shared style anchor | Define visual style once at start, use Element Reference for people/items |
-| Audio desync | Missing speaker attribution | Use `[Speaker: Name] "dialogue"` format, or with Voice Control `[Character] @VoiceName` |
+| Audio desync | Missing speaker attribution | Use `[Speaker: Name] "dialogue"` format, or with Voice Control `[Character] @VoiceName`. If it persists on a talking shot, switch to VIDEO 3.0 Turbo - stable A/V sync in longer clips is its headline strength |
+| Edited video drifts from the source | No unchanged list | On Omni editing, always append the explicit list: camera angle, motion path, spatial layout, positioning. One edit intent per generation |
+| Swapped-in object looks pasted on | Missing physical-plausibility clause | Add "lighting and shadows match the target environment, natural non-composited look, no sticker-like artifacts" (Kling's own example wording) |
+| Editing job rejected or truncated | Input video outside 3-15s | Trim the source into range; output caps at 15s |
+| 4K request fails on Turbo | Turbo has no 4K tier | Use VIDEO 3.0 or Omni for 4K |
 
 ---
 
 ## Settings Reference
 
 **Duration:**
-- VIDEO 3.0 / Omni: 5-15s (flexible)
+- VIDEO 3.0 / Turbo / Omni: 5-15s (flexible)
+- VIDEO 3.0 Omni video editing: input 3-15s, output up to 15s
 - VIDEO 3.0 Motion Control: up to 30s
 - Avatar 2.0: up to 5 minutes
 - 2.6 / 2.5 Turbo: 5-10s
@@ -317,15 +394,39 @@ See `references/prompt-templates.md` for ready-to-use templates organized by use
 **Quality / Output:**
 - Standard mode - for drafts
 - Professional mode - for finals (requires paid plan)
-- Native 4K - VIDEO 3.0 series only, at ~30 credits/sec, launched 2026-04-23
+- Native 4K - VIDEO 3.0 and Omni only (**not Turbo**), ~30 credits/sec in-app, launched 2026-04-23
+- Omni video editing accepts and returns 4K
 
 ---
 
 ## Credits & Pricing
 
-See `references/pricing.md` for plan structure, per-feature inclusions, credit costs per model, and third-party API providers (fal.ai, PiAPI, kie.ai). Pricing changes frequently.
+Kling bills two different ways and they are easy to confuse:
 
-**Key facts (verified against the official pricing page 2026-05-21):**
+- **In-app / subscription: credits.** What you spend generating in the Kling web app on a Basic/Standard/Pro/Premier/Ultra plan.
+- **API: Units.** `1 Unit = $0.14` list price, billed **per second of output**, and the rate depends on model x resolution x whether native audio and video input are on.
+
+See `references/pricing.md` for the full breakdown of both. Pricing changes frequently - re-check before quoting.
+
+**API rate card, per second of video ([source](https://kling.ai/dev/pricing), verified 2026-08-04):**
+
+| Model / configuration | 720p | 1080p | 4K |
+|---|---|---|---|
+| **VIDEO 3.0 Turbo** (native audio always on) | 0.8 U ($0.112) | 1.0 U ($0.14) | n/a |
+| VIDEO 3.0, no native audio | 0.6 U ($0.084) | 0.8 U ($0.112) | 3.0 U ($0.42) |
+| VIDEO 3.0, native audio, no Voice Control | 0.9 U ($0.126) | 1.2 U ($0.168) | 3.0 U ($0.42) |
+| VIDEO 3.0 Omni, no video input, no audio | 0.6 U ($0.084) | 0.8 U ($0.112) | 3.0 U ($0.42) |
+| VIDEO 3.0 Omni, no video input, with audio | 0.8 U ($0.112) | 1.0 U ($0.14) | 3.0 U ($0.42) |
+| VIDEO 3.0 Omni, with video input, no audio | 0.9 U ($0.126) | 1.2 U ($0.168) | 3.0 U ($0.42) |
+| Motion Control | 0.9 U ($0.126) | 1.2 U ($0.168) | n/a |
+| Avatar | 0.4 U ($0.056) | 0.8 U ($0.112) | n/a |
+
+Three things worth internalising from that table:
+1. **4K is a cliff, not a step** - 3.0 U/s regardless of model, i.e. ~2.5-5x the 1080p rate. Iterate at 720p/1080p, render 4K once.
+2. **Turbo at 1080p with audio costs the same as Omni with audio and less than VIDEO 3.0 with audio** - for talking-head work it is the cheapest 3.0-class option.
+3. **Native audio and video input each add cost.** If a clip does not need sound, turning audio off saves ~33% at 1080p.
+
+**Subscription facts (verified against the official pricing page 2026-05-21, re-verify before quoting):**
 - 5 subscription tiers: Basic (free), Standard ($6.99), Pro ($25.99), Premier ($64.99), Ultra ($127.99)
 - **Basic/free tier output cannot be used commercially** - hard restriction; user must be on Standard+ for commercial use
 - **Voice Control is FREE for all paid subscribers** (the "+2 credits/sec" rate applies to API / pay-as-you-go use, not subscription)
@@ -368,6 +469,7 @@ When facts in this skill matter for a deliverable (credit pricing, language list
 
 - **Official release notes index:** https://kling.ai/release-note
 - **Specific release notes referenced in this skill:**
+  - Kling 3.0 Model Series Upgrade - 3.0 Turbo + Omni video editing (2026-06-17): https://kling.ai/release-note/release-notes/Kling_3_Turbo
   - Cinema-Grade Native 4K (2026-04-23): https://kling.ai/release-note/release-notes/z8zeqsxwol
   - VIDEO 3.0 Motion Control (2026-03-04): https://kling.ai/release-note/release-notes/4titicw2vg
   - Kling 3.0 Era / VIDEO 3.0 + 3.0 Omni rollout (2026-01-31): https://kling.ai/release-note/release-notes/whbvu8hsip
@@ -375,5 +477,8 @@ When facts in this skill matter for a deliverable (credit pricing, language list
   - Voice Control in VIDEO 2.6 (2025-12-16): https://kling.ai/release-note/release-notes/7trhudk78j
   - Kling AI Avatar 2.0 (2025-12-04): https://kling.ai/release-note/release-notes/9bbqv0a76z
 - **Official API documentation:** https://kling.ai/document-api/quickStart/productIntroduction/overview
-- **Pricing:** https://kling.ai/dev/pricing or app dashboard after login
-- **Third-party API providers** (different pricing, current model coverage): fal.ai, PiAPI, kie.ai
+- **API rate card (Units):** https://kling.ai/dev/pricing - fetched and transcribed 2026-08-04
+- **Subscription pricing:** app dashboard after login (not publicly fetchable)
+- **Third-party API providers** (different pricing, current model coverage): fal.ai, PiAPI, kie.ai, and aggregators such as OpenRouter which expose Kling model IDs alongside competitors. Aggregator prices are their own, not Kling's - always read the provider's own billing, and note that a quoted per-second rate is a base rate: the final charge depends on resolution, duration, aspect ratio and whether audio/video input is enabled.
+
+**Release timeline covered by this skill** (newest first, from the official index): 2026-06-17 Kling 3.0 Model Series Upgrade (Turbo + Omni editing) · 2026-04-23 Native 4K · 2026-03-16 Team features + Desktop app · 2026-03-04 VIDEO 3.0 Motion Control · 2026-01-31 Kling 3.0 era (VIDEO 3.0 + Omni) · 2026-01-30 frame extraction + .mov export · 2026-01-29 Canvas Agent · 2025-12-17 VIDEO 2.6 Motion Control · 2025-12-16 Voice Control · 2025-12-04 Avatar 2.0. As of 2026-08-04 the 2026-06-17 entry is the most recent release note published.

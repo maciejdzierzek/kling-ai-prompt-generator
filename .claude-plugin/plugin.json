@@ -1,7 +1,7 @@
 {
   "name": "kling-ai-prompt-generator",
-  "description": "Generate professional Kling AI video prompts. Supports VIDEO 3.0, VIDEO 3.0 Omni, Avatar 2.0 talking avatars, Multi-Shot Storyboards, Element Reference, Voice Control, Motion Control.",
-  "version": "1.1.0",
+  "description": "Write and improve prompts for Kling AI video generation and pick the right Kling model. Covers VIDEO 3.0, VIDEO 3.0 Turbo, VIDEO 3.0 Omni (including video editing), Motion Control, Avatar 2.0 talking avatars, multi-shot storyboards, Element Reference, Voice Control, native audio, first/last frame control, credit and API costs.",
+  "version": "1.2.0",
   "author": {
     "name": "Maciej Dzierżek",
     "url": "https://maciejdzierzek.com"

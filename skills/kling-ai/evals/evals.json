@@ -1,7 +1,7 @@
 {
   "skill": "kling-ai",
   "description": "Trigger accuracy evaluation for the kling-ai skill. Each entry is a user prompt that should or should not trigger this skill. Used with the skill-creator eval framework.",
-  "version": "1.0",
+  "version": "1.1",
   "should_trigger": [
     {
       "query": "Make me a Kling AI prompt for an image-to-video animation of a perfume bottle with subtle light reflections.",
@@ -50,6 +50,22 @@
     {
       "query": "I need to generate a 30-second talking head video in Polish from a single photo.",
       "why": "Avatar 2.0 + duration constraint - skill should explain Avatar workflow"
+    },
+    {
+      "query": "I need 20 short clips of a presenter talking for a course - which Kling model keeps the cost down?",
+      "why": "VIDEO 3.0 Turbo: cheapest 3.0-class option with audio, best lip-sync, aimed at scaled creation."
+    },
+    {
+      "query": "Can I swap the product in an existing video for a different one without regenerating the whole shot?",
+      "why": "VIDEO 3.0 Omni video editing - documented object-swap capability with 3-15s input and 4K support."
+    },
+    {
+      "query": "How much does a 10 second 4K Kling clip cost through the API?",
+      "why": "API rate card in Units - 4K is a flat 3.0 U/s across models."
+    },
+    {
+      "query": "My edited Kling video keeps drifting from the original camera angle.",
+      "why": "Missing explicit unchanged list in the editing prompt - documented in Common Issues."
     }
   ],
   "should_not_trigger": [
