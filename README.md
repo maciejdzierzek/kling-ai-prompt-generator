@@ -74,11 +74,13 @@ Claude will automatically use the skill when you describe a Kling AI video task.
 ### Claude Code (CLI) - via plugin marketplace
 
 ```bash
-/plugin marketplace add maciejdzierzek/kling-ai-prompt-generator
+/plugin marketplace add maciejdzierzek/claude-plugins
 /plugin install kling-ai-prompt-generator@maciejdzierzek
 ```
 
-No download needed - installs directly from this GitHub repository.
+One marketplace, all my skills - see [maciejdzierzek/claude-plugins](https://github.com/maciejdzierzek/claude-plugins). No download needed.
+
+> **If you added this repository as a marketplace before August 2026**, switch to the command above. Claude Code registers one marketplace per name, so the old per-repo catalogues (which all used the same name) replaced each other when you installed more than one skill. This repo's catalogue still resolves, under the name `maciejdzierzek-kling`, but it is no longer the recommended path.
 
 ### Claude Code (CLI) - manual install
 

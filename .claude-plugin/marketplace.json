@@ -1,7 +1,7 @@
 {
-  "name": "maciejdzierzek",
+  "name": "maciejdzierzek-kling",
   "metadata": {
-    "description": "Claude skills and plugins by Maciej Dzierżek - AI tools for creators and businesses."
+    "description": "Legacy single-plugin catalogue. Prefer the combined marketplace: /plugin marketplace add maciejdzierzek/claude-plugins"
   },
   "owner": {
     "name": "Maciej Dzierżek",
