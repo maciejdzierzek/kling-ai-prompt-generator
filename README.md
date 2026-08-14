@@ -4,7 +4,7 @@
 > Works with Claude.ai, Claude Desktop, and Claude Code.
 > Supports Kling 3.0, Avatar 2.0 (talking avatars), Multi-Shot Storyboards, Character LoRA, Draft Mode, and Motion Control workflows.
 
-[![Live Generator](https://img.shields.io/badge/Live_Generator-maciejdzierzek.com-blue)](https://maciejdzierzek.com/narzedzia/generator-kling-ai)
+[![Live Generator](https://img.shields.io/badge/Live_Generator-maciejdzierzek.com-blue)](https://maciejdzierzek.com/narzedzia/generator-promptow/?model=kling)
 [![Claude Skill](https://img.shields.io/badge/Claude-Skill-orange)](https://claude.ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -18,7 +18,7 @@ Works with **Claude.ai** (web), **Claude Desktop**, and **Claude Code** - all th
 
 Developed and used daily in production by [Maciej Dzierżek](https://maciejdzierzek.com) - consultant, trainer, and creator from Poland who works with Kling AI professionally.
 
-**Try the interactive web version (no installation needed):** [maciejdzierzek.com/narzedzia/generator-kling-ai](https://maciejdzierzek.com/narzedzia/generator-kling-ai)
+**Try the interactive web version (no installation needed):** [maciejdzierzek.com/narzedzia/generator-promptow](https://maciejdzierzek.com/narzedzia/generator-promptow/?model=kling)
 
 ---
 
@@ -99,7 +99,7 @@ Reload Claude Code. The skill activates automatically.
 
 ### Interactive web generator (no installation)
 
-Use directly at: [maciejdzierzek.com/narzedzia/generator-kling-ai](https://maciejdzierzek.com/narzedzia/generator-kling-ai)
+Use directly at: [maciejdzierzek.com/narzedzia/generator-promptow](https://maciejdzierzek.com/narzedzia/generator-promptow/?model=kling)
 
 No API key, no registration, no data sent to servers. Works entirely in your browser.
 
@@ -211,7 +211,7 @@ See [examples/](examples/) for ready-to-use prompts with notes on expected resul
 Built by [Maciej Dzierżek](https://maciejdzierzek.com) - consultant, trainer, and creator based in Poland. He helps businesses implement AI in their workflows through training, consulting, and hands-on tools.
 
 - Website: [maciejdzierzek.com](https://maciejdzierzek.com)
-- All AI tools: [maciejdzierzek.com/narzedzia](https://maciejdzierzek.com/narzedzia)
+- All AI tools: [maciejdzierzek.com/narzedzia](https://maciejdzierzek.com/narzedzia/)
 
 ---
 
