@@ -11,13 +11,13 @@
     {
       "name": "kling-ai-prompt-generator",
       "source": "./",
-      "description": "Write and improve prompts for Kling AI video generation and pick the right Kling model. Covers VIDEO 3.0, VIDEO 3.0 Turbo, VIDEO 3.0 Omni (including video editing), Motion Control, Avatar 2.0 talking avatars, multi-shot storyboards, Element Reference, Voice Control, native audio, first/last frame control, credit and API costs.",
-      "version": "1.2.0",
+      "description": "Write and improve prompts for Kling AI video generation and pick the right Kling model. Covers Kling 4.0, Kling 4.0 Flash, VIDEO 3.0, VIDEO 3.0 Turbo, VIDEO 3.0 Omni (including video editing), Motion Control, Avatar 2.0 talking avatars, multi-shot storyboards, Element Reference, Voice Control, native audio, first/last frame control, credit and API costs.",
+      "version": "1.3.0",
       "author": {
         "name": "Maciej Dzierżek",
         "url": "https://maciejdzierzek.com"
       },
-      "homepage": "https://maciejdzierzek.com/narzedzia/generator-kling-ai",
+      "homepage": "https://maciejdzierzek.com/narzedzia/generator-promptow/?model=kling",
       "license": "MIT"
     }
   ]

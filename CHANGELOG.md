@@ -4,6 +4,24 @@ All notable changes to the Kling AI Prompt Generator skill and plugin are docume
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-11-06
+
+### Added
+
+- **Kling 4.0 and Kling 4.0 Flash** (released 2026-10-15), with what is live and what is only announced: 4K and HDR on 4.0 are not available through the API or CLI yet.
+- Omni Reference with image, video, element and voice references, up to 10 keyframes, editing with the functional word `Edit`, on-screen text.
+- `references/api-and-cli.md`: model IDs, endpoints, CLI commands and known contradictions in Kling's own docs.
+
+### Changed
+
+- Official 4.0 guidance on negatives: drop the list, keep only `no subtitles` and `no background music`.
+- Pricing rewritten: Kling 4.0 uses separate Flagship units, new subscription plans.
+
+### Fixed
+
+- VIDEO 3.0 duration is 3-15 s, not 5-15 s.
+- Removed claims with no source: the 10 MB image limit, Avatar frame rates, the credit conversion for 720p. `[Speaker: X]` is marked as our own test, and "stuck at 99%" as user reports.
+
 ## [1.2.0] - 2026-08-05
 
 Maintenance audit against the official Kling release notes ([kling.ai/release-note](https://kling.ai/release-note)) and the public API rate card ([kling.ai/dev/pricing](https://kling.ai/dev/pricing)), both fetched with the Playwright SPA fetcher on 2026-08-04. One new Kling release has shipped since v1.1.0 and the skill was missing it entirely.

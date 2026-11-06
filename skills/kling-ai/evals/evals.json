@@ -1,7 +1,7 @@
 {
   "skill": "kling-ai",
   "description": "Trigger accuracy evaluation for the kling-ai skill. Each entry is a user prompt that should or should not trigger this skill. Used with the skill-creator eval framework.",
-  "version": "1.1",
+  "version": "1.3",
   "should_trigger": [
     {
       "query": "Make me a Kling AI prompt for an image-to-video animation of a perfume bottle with subtle light reflections.",
@@ -13,7 +13,7 @@
     },
     {
       "query": "What's the difference between Kling 3.0 and Kling 2.6?",
-      "why": "Model selection question - core skill scope"
+      "why": "Model selection question - core skill scope, should also point to Kling 4.0."
     },
     {
       "query": "Help me write a cinematic prompt for a 4-shot storyboard about a product launch.",
@@ -25,7 +25,7 @@
     },
     {
       "query": "I want to use the same character across multiple Kling videos. How?",
-      "why": "Character LoRA / consistency - documented in skill"
+      "why": "Character consistency - Element Reference, documented in skill."
     },
     {
       "query": "How much does Kling cost per video? Is the free tier enough for testing?",
@@ -41,7 +41,7 @@
     },
     {
       "query": "How do I use Draft Mode in Kling to save credits?",
-      "why": "Draft Mode - new feature explicitly documented"
+      "why": "\"Draft Mode\" is a term invented by third-party reviews. Trigger on the Kling mention; the skill should steer to real options (720p, Flash), not confirm the feature."
     },
     {
       "query": "Stwórz mi prompt do Klinga na video produktowe perfum.",
@@ -53,7 +53,7 @@
     },
     {
       "query": "I need 20 short clips of a presenter talking for a course - which Kling model keeps the cost down?",
-      "why": "VIDEO 3.0 Turbo: cheapest 3.0-class option with audio, best lip-sync, aimed at scaled creation."
+      "why": "VIDEO 3.0 Turbo is the cheapest 1080p with sound; Kling 4.0 Flash is cheaper at 720p. Skill should compare both."
     },
     {
       "query": "Can I swap the product in an existing video for a different one without regenerating the whole shot?",
@@ -61,11 +61,47 @@
     },
     {
       "query": "How much does a 10 second 4K Kling clip cost through the API?",
-      "why": "API rate card in Units - 4K is a flat 3.0 U/s across models."
+      "why": "API rate card - 4K is a flat 3.0 U/s on VIDEO 3.0 and Omni. Kling 4.0 has no 4K price, skill should say so."
     },
     {
       "query": "My edited Kling video keeps drifting from the original camera angle.",
       "why": "Missing explicit unchanged list in the editing prompt - documented in Common Issues."
+    },
+    {
+      "query": "Should I use Kling 4.0 or Kling 4.0 Flash for a 15 second product clip?",
+      "why": "4.0 vs Flash - core 2026-11 model choice: 720p only, no last frame or keyframes on Flash."
+    },
+    {
+      "query": "I have 5 images of key moments and want a video that hits each one at a set time.",
+      "why": "Multi-keyframes on Kling 4.0, up to 10 images."
+    },
+    {
+      "query": "Write a Kling Omni Reference prompt: this photo is the character, this clip is the dance.",
+      "why": "Omni Reference - asset roles are the critical rule."
+    },
+    {
+      "query": "Why can't I get 4K from kling-video-v4_0?",
+      "why": "Status table: 4K is not enabled in the CLI and coming soon in the API. Use VIDEO 3.0 or Omni."
+    },
+    {
+      "query": "Kling keeps adding subtitles and music to my clip.",
+      "why": "Official 4.0 guidance: write no subtitles and no background music."
+    },
+    {
+      "query": "Can Kling 4.0 lip-sync to my ElevenLabs recording?",
+      "why": "Audio input on 4.0 is voice reference only. Avatar 2.0 is the correct path."
+    },
+    {
+      "query": "How much does Kling 4.0 cost through the API if I give it a reference video?",
+      "why": "Flagship Units and billed-duration rule: output x 2 or input + output."
+    },
+    {
+      "query": "My Kling edit generated a whole new video instead of changing the original.",
+      "why": "Prompt said Reference. Must say Edit @Video1."
+    },
+    {
+      "query": "Generate a 25 second single take in Kling.",
+      "why": "Only Kling 4.0 goes past 15s in a generation (up to 30s)."
     }
   ],
   "should_not_trigger": [
@@ -100,7 +136,7 @@
   ],
   "edge_cases": [
     {
-      "query": "I'm comparing AI video tools - is Runway Gen-4 or Kling 3.0 better for my use case?",
+      "query": "I'm comparing AI video tools - is Runway Gen-4 or Kling 4.0 better for my use case?",
       "expected": "should_trigger",
       "why": "User mentions Kling explicitly and asks for comparison - skill should engage on the Kling side"
     },

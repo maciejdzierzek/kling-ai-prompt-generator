@@ -41,16 +41,16 @@ A creator types a prompt → match cut into the world the prompt describes (a sa
 ## Features
 
 - **6 generation modes:** Image-to-Video, Text-to-Video, Multi-Shot Storyboard, Avatar 2.0 (talking avatars), Motion Control, Canvas Agent (one-click storyboard)
-- **Model-aware:** Covers the current Kling lineup - **VIDEO 3.0**, **VIDEO 3.0 Turbo**, **VIDEO 3.0 Omni**, **VIDEO 3.0 Motion Control**, **Avatar 2.0**, **2.6**, **2.5 Turbo** - with model-specific prompt length and element limits
+- **Model-aware:** Covers the current Kling lineup - **Kling 4.0**, **Kling 4.0 Flash**, **VIDEO 3.0**, **VIDEO 3.0 Turbo**, **VIDEO 3.0 Omni**, **VIDEO 3.0 Motion Control**, **Avatar 2.0**, **2.6**, **2.5 Turbo** - with model-specific prompt length and element limits
 - **Avatar 2.0 workflow:** Generate a talking avatar from one photo + audio - up to 5 minutes of continuous output
 - **Element Reference:** Kling's official mechanism for cross-shot character/scene consistency. Multi-image references on VIDEO 3.0, plus video references on Omni
 - **Voice Control:** Custom voice creation with `[Character] @VoiceName` syntax (VIDEO 2.6 / 3.0, EN+ZH bidirectional)
 - **Canvas Agent guidance:** One-click storyboard, multi-angle expansion, reverse prompt suggestions, batch generation
 - **Camera movement vocabulary:** 10 named movements (static, dolly, orbit, tracking, crane, POV...) with speed modifiers
 - **Motion endpoint pattern:** Adds "returns to starting position" / "then settles" to prevent the stuck-at-99% generation hang
-- **Audio prompts:** Speaker attribution syntax for lip-synced dialogue (5 languages on VIDEO 3.0: EN, ZH, JA, KO, ES)
+- **Audio prompts:** Speaker attribution syntax for lip-synced dialogue (5 languages on VIDEO 3.0: EN, ZH, JA, KO, ES), and the `says in [language]:` form on Kling 4.0
 - **Sequential action support:** "First / then / finally" action structure for multi-step scenes
-- **Native 4K guidance:** 30 credits/sec in-app on VIDEO 3.0 and Omni (since 2026-04-23); not available on Turbo
+- **Native 4K guidance:** 30 credits/sec in-app on VIDEO 3.0 and Omni (since 2026-04-23); not available on Turbo, announced but not live on Kling 4.0
 - **Video editing:** prompt patterns for editing an existing clip on VIDEO 3.0 Omni - object swap, background/subject replacement, targeted attribute change, style transfer with trajectory lock (3-15s input, 4K in and out)
 - **API rate card in Units:** per-second cost by model x resolution x native-audio x video-input, so you can price a deliverable before generating it
 - **10+ ready-to-use templates:** Product, portrait, atmospheric loop, commercial, talking head, action scene, Avatar presenter/explainer/singer
@@ -194,8 +194,10 @@ See [examples/](examples/) for ready-to-use prompts with notes on expected resul
 
 | Model | Best For | Prompt Length | Max Duration | Audio / Output | Released |
 |-------|----------|---------------|--------------|-------|----------|
-| **VIDEO 3.0** | Cinematic storytelling, multi-shot, native audio multilingual | 100-200 words | 15s | EN, ZH, JA, KO, ES + dialects / up to 4K | 2026-01-31 |
-| **VIDEO 3.0 Turbo** | Same job, faster and cheaper per second; best audio-visual sync and lip sync | 100-200 words | 15s | Native audio always on / 720p-1080p, no 4K | 2026-06-17 |
+| **Kling 4.0** | Default choice: Omni Reference, keyframes, longer shots | Long briefs, up to 8,000 tokens | 30s | Native audio / 720p-1080p, 4K announced | 2026-10-15 |
+| **Kling 4.0 Flash** | Fast iteration, no last frame or keyframes | Long briefs, up to 8,000 tokens | 20s | Native audio / 720p | 2026-10-15 |
+| **VIDEO 3.0** | 4K, cheap 1080p series, multi-shot, native audio multilingual | 100-200 words | 15s | EN, ZH, JA, KO, ES + dialects / up to 4K | 2026-01-31 |
+| **VIDEO 3.0 Turbo** | Same job, faster and cheaper per second | 100-200 words | 15s | Native audio always on / 720p-1080p, no 4K | 2026-06-17 |
 | **VIDEO 3.0 Omni** | VIDEO 3.0 + video element reference + element voice control + video editing | 100-200 words | 15s | EN, ZH, JA, KO, ES + dialects / up to 4K | 2026-01-31 |
 | **VIDEO 3.0 Motion Control** | Motion transfer with high facial consistency (incl. occlusions) | Short | 30s | Optional / 1080p | 2026-03-04 |
 | **Avatar 2.0** | Talking avatars from 1 image + 1 audio file | 20-50 words (framing) | up to 5 min | Lip-syncs to your audio / 1080p | 2025-12-04 |
